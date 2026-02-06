@@ -9,6 +9,7 @@ use App\Form\CategorieType;
 use App\Entity\Categorie;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\Article;
 
 final class BlogController extends AbstractController
 {
@@ -19,6 +20,7 @@ final class BlogController extends AbstractController
            
         ]);
     }
+
     #[Route('/categorie', name: 'app_categorie')]
 public function categorie(Request $request, EntityManagerInterface $em): Response
 {
@@ -39,4 +41,25 @@ public function categorie(Request $request, EntityManagerInterface $em): Respons
         'form' => $form->createView()
 ]);
 }
+    #[Route('/article', name: 'app_article')]
+    public function article(Request $request, EntityManagerInterface $em): Response
+    {
+        $article = new Article();
+        $form = $this->createForm(ArticleType::class, $article);
+        if ($request->isMethod('POST')){
+            $form->handleRequest($request);
+            if ($form->isSubmitted()&&$form->isValid()){
+                $em->persist($article);
+                 $em->flush();
+
+                $this->addFlash('notice','Article envoyé');
+                return $this->redirectToRoute('app_article');
+            }
+            }
+        return $this->render('blog/article.html.twig', [
+            'form' => $form->createView()
+
+        ]);
+    }
+
 }
