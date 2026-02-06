@@ -4,6 +4,14 @@
 
 {% block body %}
 
-<h1 class="text-center text-primary mt-4 pt-4 display-1 fw-bold"> Catégorie</h1>
+<div class="container-fluid">
+			<div class="row justify-content-center">
+			
+				<div class="col-10 text-primary">
+					<h1 class="text-center text-primary mt-4 pt-4 display-1 fw-bold">Catégorie</h1>
+					{{form(form)}}
+				</div>
+			</div>
+		</div>
 {{form(form)}}
 {% endblock %}
