@@ -9,7 +9,9 @@ use App\Form\CategorieType;
 use App\Entity\Categorie;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Form\ArticleType;
 use App\Entity\Article;
+
 
 final class BlogController extends AbstractController
 {
