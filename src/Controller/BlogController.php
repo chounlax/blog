@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Form\CategorieType;
 use App\Entity\Categorie;
+use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
 
 final class BlogController extends AbstractController
@@ -14,15 +15,14 @@ final class BlogController extends AbstractController
     #[Route('/', name: 'app_blog')]
     public function index(): Response
     {
-        $form = $this->createForm(CategorieType::class);
         return $this->render('blog/index.html.twig', [
-            'form' => $form->createView()  
+           
         ]);
     }
     #[Route('/categorie', name: 'app_categorie')]
 public function categorie(Request $request, EntityManagerInterface $em): Response
 {
-    $categorie = new Contact();
+    $categorie = new Categorie();
     $form = $this->createForm(CategorieType::class, $categorie);
 		
     if($request->isMethod('POST')){
