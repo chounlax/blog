@@ -22,6 +22,9 @@ class Commentaire
     #[ORM\Column(length: 50)]
     private ?string $Email = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $Commentaire = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -62,4 +65,17 @@ class Commentaire
 
         return $this;
     }
+
+    public function getCommentaire(): ?string
+    {
+        return $this->Commentaire;
+    }
+
+    public function setCommentaire(string $Commentaire): static
+    {
+        $this->Commentaire = $Commentaire;
+
+        return $this;
+    }
+    
 }
