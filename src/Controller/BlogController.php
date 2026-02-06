@@ -15,4 +15,12 @@ final class BlogController extends AbstractController
             
         ]);
     }
+
+    #[Route('/article', name: 'app_article')]
+    public function article(): Response
+    {
+        return $this->render('blog/article.html.twig', [
+            
+        ]);
+    }
 }
