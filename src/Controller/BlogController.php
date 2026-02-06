@@ -15,4 +15,11 @@ final class BlogController extends AbstractController
             
         ]);
     }
+    #[Route('/commentaire', name: 'app_commentaire')]
+    public function commentaire(): Response
+    {
+        return $this->render('blog/commentaire.html.twig', [
+            
+        ]);
+    }
 }
